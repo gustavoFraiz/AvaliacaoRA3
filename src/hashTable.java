@@ -8,11 +8,16 @@ public class hashTable {
 
     public int countI;
 
+    public int count1;
+    public int count2;
+
     public hashTable(int tamanho, int modo){
         tabela = new ListaEncadeada[tamanho];
         this.tamanho = tamanho;
         this.modo = modo;
         this.countI = 0;
+        this.count1 = 0;
+        this.count2 = 0;
     }
 
     public int funcaoHash(int chave, int modo){
@@ -39,8 +44,10 @@ public class hashTable {
         }
         else{
             tabela[index] = new ListaEncadeada();
+            count1 = count1 + 1;
         }
         tabela[index].inserir(item);
+        count2 = count2 + 1;
     }
 
 //    public int busca(int chave) {
@@ -87,6 +94,7 @@ public class hashTable {
                 tabela[i].imprime();
                 System.out.println("null");
         }
+        System.out.println("Numero de colisoes: "+ (count2 - count1));
 
     }
 
