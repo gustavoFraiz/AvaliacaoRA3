@@ -14,9 +14,17 @@ public class hashTable {
 
     public int funcaoHash(int chave, int modo){
         if(modo == 1){
-            return Math.abs(chave) % tamanho;
+            return Math.abs(chave) % 101;
         }
-        return Math.abs(chave) % tamanho;
+        if(modo == 2){
+            double aa = chave;
+            return Math.abs((int)(((aa * 0.76462)%1)*tamanho));
+        }
+        if(modo ==3){
+            double aa = chave;
+            return (Math.abs((int)(((aa * 0.76462)%1)*tamanho)) + Math.abs(chave) % 101) % tamanho;
+        }
+       return -1;
     }
 
     public void put(int item){
