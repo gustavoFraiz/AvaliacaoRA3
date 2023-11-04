@@ -1,7 +1,7 @@
 import java.util.Scanner;
 
 public class ListaEncadeada {
-    private Node Lista;
+    public Node Lista;
     private Node atual;
     public ListaEncadeada(){
         Lista = null;

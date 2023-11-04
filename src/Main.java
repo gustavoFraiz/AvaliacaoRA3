@@ -13,6 +13,6 @@ public class Main {
 
         hash.imprime();
         System.out.println("-----------------");
-        System.out.println(hash.busca(49595001));
+        hash.busca(49595001);
     }
 }
