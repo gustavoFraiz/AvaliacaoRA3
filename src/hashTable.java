@@ -22,15 +22,20 @@ public class hashTable {
 
     public int funcaoHash(int chave, int modo){
         if(modo == 1){
-            return Math.abs(chave) % tamanho;
+            int hash = chave % tamanho;
+            if(hash < 0){hash *= -1;}
+            return hash;
         }
         if(modo == 2){
-            double aa = chave;
-            return Math.abs((int)(((aa * 0.76462)%1)*tamanho));
+            int hash = (int) (((chave * 0.76462) % 1) * tamanho);
+            if(hash < 0){hash *= -1;}
+            return hash;
         }
         if(modo ==3){
-            double aa = chave;
-            return (Math.abs((int)(((aa * 0.76462)%1)*tamanho)) + Math.abs(chave) % 101) % tamanho;
+            if(chave < 0){chave *= -1;}
+            int hash = (int) (((Math.sqrt(chave)) % 1) * tamanho);
+            if(hash < 0){hash *= -1;}
+            return hash;
         }
        return -1;
     }
@@ -50,38 +55,17 @@ public class hashTable {
         count2 = count2 + 1;
     }
 
-//    public int busca(int chave) {
-//        for (int i=0; i<tamanho; i++) {
-//            if (tabela[i] != null) {
-//                if (tabela[i].busca_lista(chave)) {
-//                    System.out.println(i);
-//                    System.out.println("Numero de iteracoes: " + countI);
-//                    return i;
-//                }
-//
-//            }
-//            countI = countI + 1;
-//        }
-//        return -1;
-//    }
+    public int busca(int chave) {
+        for (int i=0; i<tamanho; i++) {
+            if (tabela[i] != null) {
+                if (tabela[i].busca_lista(chave)) {
+                    System.out.println(i);
+                    System.out.println("Numero de iteracoes: " + countI);
+                    return i;
+                }
 
-    public int busca(int chave){
-        if(modo == 1){
-            int hashIndex = Math.abs(chave) % tamanho;
-            System.out.println(hashIndex);
-            return(hashIndex);
-        }
-        if(modo == 2){
-            double aa = chave;
-            int hashIndex = Math.abs((int)(((aa * 0.76462)%1)*tamanho));
-            System.out.println(hashIndex);
-            return hashIndex;
-        }
-        if(modo == 3){
-            double aa = chave;
-            int hashIndex = (Math.abs((int)(((aa * 0.76462)%1)*tamanho)) + Math.abs(chave) % 101) % tamanho;
-            System.out.println(hashIndex);
-            return hashIndex;
+            }
+            countI = countI + 1;
         }
         return -1;
     }
